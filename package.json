@@ -41,7 +41,7 @@
     "clsx": "latest",
     "copy-to-clipboard": "latest",
     "mysql2": "^3.6.5",
-    "next": "latest",
+    "next": "^13.2.4",
     "react": "latest",
     "react-dom": "latest",
     "recharts": "^2.10.3"
