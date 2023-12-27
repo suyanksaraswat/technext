@@ -43,7 +43,8 @@
     "mysql2": "^3.6.5",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "recharts": "^2.10.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "latest",
