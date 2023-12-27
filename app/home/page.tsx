@@ -31,7 +31,6 @@ const Home: NextPage = () => {
     try {
       const res = await apiFetchPatents(query, itemsPerPage, currentPage);
 
-      console.log('## res-', res);
       setData(res?.data);
       setTotalItems(res?.count);
       setLoading(false);
@@ -70,7 +69,7 @@ const Home: NextPage = () => {
 
         {loading ? (
           <>Loading...</>
-        ) : debouncedInputValue ? (
+        ) : (
           <>
             <PatentTable data={data} />
 
@@ -78,8 +77,6 @@ const Home: NextPage = () => {
               <Pagination count={Math.ceil(totalItems / itemsPerPage)} page={currentPage} onChange={handlePageChange} />
             )}
           </>
-        ) : (
-          'Try searching something!'
         )}
       </Stack>
     </Stack>

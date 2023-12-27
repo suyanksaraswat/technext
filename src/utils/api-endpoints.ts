@@ -1,4 +1,4 @@
-const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT || 'http://localhost:3000';
+const SERVER_ENDPOINT = process.env.NEXT_PUBLIC_SERVER_ENDPOINT || 'http://localhost:3000';
 
 export type ErrorResponse = {
   status: string;

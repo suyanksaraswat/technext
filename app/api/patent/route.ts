@@ -4,6 +4,7 @@ import { connect } from 'src/utils/db';
 export async function GET(request: NextRequest) {
   try {
     const query = request.nextUrl.searchParams.get('query');
+
     const offset = request.nextUrl.searchParams.get('offset');
     const limit = request.nextUrl.searchParams.get('limit');
 
@@ -14,23 +15,15 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    if (!query?.trim() || query?.trim() === '') {
-      return new NextResponse('Invalid query', {
-        status: 404,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
     const conn = await connect();
 
     const data: any = await conn.query(
-      `SELECT * FROM patent WHERE patent_text LIKE '%${query?.trim()}%' ORDER BY patent_id LIMIT ${limit} OFFSET ${offset}`
+      `SELECT * FROM patent ${query ? `WHERE patent_text LIKE '%${query}%'` : ''} ORDER BY patent_id LIMIT ${limit} OFFSET ${offset}`
     );
 
     const count: any = await conn.query(
-      `SELECT COUNT(*) AS total_count FROM patent WHERE patent_text LIKE '%${query?.trim()}%'`
+      `SELECT COUNT(*) AS total_count FROM patent ${query ? `WHERE patent_text LIKE '%${query}%'` : ''} ORDER BY patent_id`
     );
-    console.log("## count?.[0]?.[0]?.total_count,-", count?.[0],)
 
     let json_response = {
       status: 'success',
