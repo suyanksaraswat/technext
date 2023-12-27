@@ -31,5 +31,3 @@ const RootLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
 };
 
 export default RootLayout;
-
-export const dynamic = 'force-dynamic';
