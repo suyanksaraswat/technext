@@ -47,3 +47,9 @@ export async function apiFetchAnalytics(query: string): Promise<{ data: Patent[]
 
   return handleResponse<any>(response).then((data) => data);
 }
+
+export async function apiFetchDownloadPatents(): Promise<{ data: DownloadData[]; count: number }> {
+  const response = await fetch(`${SERVER_ENDPOINT}/api/download`, { cache: 'no-store' });
+
+  return handleResponse<any>(response).then((data) => data);
+}
